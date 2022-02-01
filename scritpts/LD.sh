@@ -3,8 +3,8 @@
 ####    LD structure using plink 1.9
 ####
 set -x;
-binary_dir="$HOME/bin";
-db_dir="/media/yagoubali/bioinfo3/db/magma" #${binary_dir};
+binary_dir="/mnt/d/ldstructure";
+db_dir="/mnt/d/ldstructure" #${binary_dir};
 output="LD.out2";
 outdir=$1;
 population=$2;
@@ -12,7 +12,7 @@ ld_analysis=$3; #{pairwise, all_LD_values,clumping }
 if [[ "$ld_analysis" = "pairwise" ]]; then
   snp1=$4
   snp2=$5
-  ${binary_dir}/plink --bfile ${db_dir}/g1000_${population}/g1000_${population}  \
+  ${binary_dir}/plink --bfile ${db_dir}/g1000_${population}  \
   --ld $snp1 $snp2 \
   --out  ${outdir}/temp
 
@@ -25,7 +25,7 @@ elif [[ "$ld_analysis" = "all_LD_values" ]]; then
     ld_window=$6  #1000
     ld_window_r2=$7
 
-      ${binary_dir}/plink --bfile ${db_dir}/g1000_${population}/g1000_${population}  \
+      ${binary_dir}/plink --bfile ${db_dir}/g1000_${population}  \
       --r2  --ld-snp $snp1 \
       --ld-window-kb $ld_window_kb \
       --ld-window $ld_window \
@@ -66,7 +66,7 @@ elif [[ $ld_analysis = "clumping" ]]; then
   #./clumping.sh UKB_bv_height_SMR_0.05.txt outdir eur 0.1 0.05 0.8 1 No  Yes glist-hg19 0
 
   ${binary_dir}/plink \
-      --bfile ${db_dir}/g1000_${population}/g1000_${population} \
+      --bfile ${db_dir}/g1000_${population} \
       --clump-p1 ${clump_p1} \
       --clump-p2 ${clump_p2} \
       --clump-r2 ${clump_r2} \
