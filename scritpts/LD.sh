@@ -33,6 +33,8 @@ elif [[ "$ld_analysis" = "all_LD_values" ]]; then
       --out ${outdir}/temp
 
       mv ${outdir}/temp.ld ${outdir}/${output}
+      sed -i $'s/^  *//' ${outdir}/${output} ## Remove space at the begining of each line
+      sed -i 's/  */\t/g' ${outdir}/${output} ## spaces to tab
 elif [[ $ld_analysis = "clumping" ]]; then
   gwas_summary=$4;
   clump_p1=$5;            ## P-value threshold for a SNP to be included as an index SNP. By default, must have p-value no larger than 0.0001
@@ -77,6 +79,8 @@ elif [[ $ld_analysis = "clumping" ]]; then
       ${allow_overlap_cmd} \
       ${gene_region_cmd} \
       --out ${outdir}/${output}
+      sed -i $'s/^  *//' ${outdir}/${output}.clumped  ## Remove space at the begining of each line
+      sed -i 's/  */\t/g' ${outdir}/${output}.clumped ## spaces to tab
 fi
 #./LD.sh ld_pairwise afr pairwise rs2840528 rs123
 #./LD.sh ld_all afr all_LD_values rs2840528  1 1000 0.2
