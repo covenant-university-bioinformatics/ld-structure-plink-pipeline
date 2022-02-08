@@ -5,12 +5,12 @@
 set -x;
 
 #development
-binary_dir="/local/datasets/ld";
-db_dir="/local/datasets/ld" #${binary_dir};
-
-#production
 #binary_dir="/local/datasets/ld";
 #db_dir="/local/datasets/ld" #${binary_dir};
+
+#production
+binary_dir="/local/datasets/ld";
+db_dir="/local/datasets/ld" #${binary_dir};
 
 output="LD.out2";
 outdir=$1;
