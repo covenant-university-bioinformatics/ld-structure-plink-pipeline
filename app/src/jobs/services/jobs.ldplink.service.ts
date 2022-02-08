@@ -68,7 +68,6 @@ export class JobsLDPlinkService {
         if (createJobDto.ld_analysis === LDAnalysisOptions.CLUMPING) {
           const fileSize = await fileSizeMb(file.path);
           longJob = fileSize > 1;
-          longJob = false;
           newJob = await LDPlinkJobsModel.build({
             job_name: createJobDto.job_name,
             jobUID,
@@ -91,8 +90,7 @@ export class JobsLDPlinkService {
       if (createJobDto.email) {
         if (createJobDto.ld_analysis === LDAnalysisOptions.CLUMPING) {
           const fileSize = await fileSizeMb(file.path);
-          // longJob = fileSize > 1;
-          longJob = false;
+          longJob = fileSize > 1;
           newJob = await LDPlinkJobsModel.build({
             job_name: createJobDto.job_name,
             jobUID,
