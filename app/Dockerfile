@@ -16,6 +16,7 @@ RUN apk add --no-cache bash
 #remove windows line endings
 RUN apk add dos2unix
 RUN dos2unix pipeline_scripts/LD.sh
+RUN chmod 775 pipeline_scripts/LD.sh
 
 RUN npm run build
 
